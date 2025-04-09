@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-Vindo!</title>
+    <link rel="shortcut icon" href="/pag.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: #C3D3f0;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+        .item {
+            width: 85vh;
+            height: 100vh;
+            display: block;
+            margin-top: 0vh;
+        }
+        .item2 {
+            position: fixed;
+            width: 52vh;
+            height: 55vh;
+            display: flex;
+            z-index: 1001;
+            margin-left: 144vh;
+            margin-top: 19vh;
+        }
+        .left-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .right-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .quadrado {
+            align-items: center;
+            display: flex;
+            border-radius: 4vh;
+            width: 60vh;
+            height: 55vh;
+            background-color: rgb(255, 255, 255); /* Fundo semi-transparente */
+            backdrop-filter: blur(10px); /* Efeito de desfoque */
+            -webkit-backdrop-filter: blur(40vh); /* Para compatibilidade com Safari */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            border: 0.6vh solid rgba(0, 4, 59, 0.349); /* Borda sutil */
+            z-index: 1001;
+            position: absolute;
+            top: 45vh;
+            left: 40vh;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+        }
+        .logo {
+            margin-top: 4vh;
+            height: 6vh;
+            width: 11vh;
+        }
+        .quadrado h3 {
+            font-weight: 450;
+            color: #0d002c;
+            font-size: 7vh;
+            position: relative;
+            top: -3vh;
+            left: 0;
+        }
+        .quadrado button {
+            background-color: rgb(9, 0, 41);
+            color: #ffffff;
+            padding: 1.2vh 5.5vh;
+            border: 0.4vh solid #B0A990; /* Borda adicionada aqui */
+            border-radius: 2.5vh;
+            font-size: 3.0vh;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 5vh;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .quadrado button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0);
+        }
+        p {
+            position: fixed;
+            font-size: 1.3vh;
+            position: absolute;
+            bottom: 4vh;
+            left: 4vh;
+            margin: 0;
+            padding: 2vh;
+            background-color: rgba(0, 0, 0, 0.062);
+            border-radius: 2vh;
+            z-index: 1002;
+        }
+    </style>
+</head>
+<body>
+    <div class="left-container">
+        <img src="/i/item.png" class="item2">
+    </div>
+    <div class="right-container">
+        <img src="/i/item0.png" class="item">
+    </div>
+    <div class="quadrado">
+        <img src="/c/logo3.png" class="logo">
+        <h3>Bem Vindo</h3>
+        <button onclick="window.location.href='p/inicio.html'">Entrar</button>
+    </div>
+    <p>Bem-vindo ao Agendei, o seu destino completo para aprendizado online!<br>
+        Aqui, você encontrará uma vasta biblioteca de videoaulas cuidadosamente<br>
+        elaboradas para impulsionar o seu conhecimento e habilidades.</p>
+</body>
+</html>
