@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quiz #03</title>
+    <link rel="shortcut icon" href="/c/pag.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a192f;
+            color: #e6f1ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            transform: scale(1);
+            transform-origin: top center;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .quiz-container {
+            width: 600px;
+            background-color: #172a45;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .quiz-header {
+            background-color: #112240;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #4fc3f7;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .quiz-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #4fc3f7;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background-color: #1f4068;
+            margin-top: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #4fc3f7;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .quiz-body {
+            padding: 30px;
+        }
+        
+        .question {
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+        }
+        
+        .question h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ccd6f6;
+        }
+        
+        .figure-img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #4fc3f7;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #1f4068;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background-color: #2a5485;
+        }
+        
+        .option input {
+            margin-right: 12px;
+            accent-color: #4fc3f7;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .option label {
+            cursor: pointer;
+            font-size: 15px;
+            width: 100%;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            background-color: #112240;
+            color: #e6f1ff;
+            border: 1px solid #4fc3f7;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background-color: #4fc3f7;
+            color: #0a192f;
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .submit-btn {
+            padding: 12px 25px;
+            background-color: #1f4068;
+            color: white;
+            border: 1px solid #4fc3f7;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #4fc3f7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.3);
+        }
+        
+        .results {
+            display: none;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .results h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+        }
+        
+        .score {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #112240;
+            border-radius: 8px;
+        }
+        
+        .answers {
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .answer-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #1f4068;
+            border-radius: 6px;
+        }
+        
+        .correct {
+            border-left: 3px solid #4fc3f7;
+        }
+        
+        .incorrect {
+            border-left: 3px solid #ff6b6b;
+        }
+        
+        .unanswered {
+            border-left: 3px solid #8892b0;
+        }
+
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-buttons a {
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+        
+        .logo1 {
+            height: 40px;
+            width: auto;
+        }
+        
+        @media (max-width: 650px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+            }
+            
+            .quiz-container {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 70px;
+            }
+            
+            .quiz-header, .quiz-body {
+                padding: 15px;
+            }
+            
+            .question h3 {
+                font-size: 16px;
+            }
+            
+            .option label {
+                font-size: 14px;
+            }
+
+            .result-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn, .submit-btn {
+                width: 100%;
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+            .logo {
+                height: 50px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .logo1 {
+                height: 30px;
+            }
+        }
+
+        /* Prevenir zoom */
+        @media (hover: none) {
+            body {
+                touch-action: pan-x pan-y;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="/c/logobranca.png" class="logo">
+    
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="logo-container">
+                <img src="/c/logo3branca.png" class="logo1">
+            </div>
+            <h1>Quiz Figuras Bidimensionais</h1>
+            <p>Identifique propriedades pelo número de lados e tipos de ângulos</p>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+        <div class="quiz-body">
+            <!-- Questão 1 -->
+            <div class="question active" id="question-1">
+                <h3>1. Qual figura geométrica tem exatamente 3 lados e 3 ângulos?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1-a" name="q1" value="a">
+                        <label for="q1-a">A) Quadrado</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1-b" name="q1" value="b">
+                        <label for="q1-b">B) Retângulo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1-c" name="q1" value="c">
+                        <label for="q1-c">C) Triângulo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1-d" name="q1" value="d">
+                        <label for="q1-d">D) Pentágono</label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <a href="/p/atividades.html" class="nav-btn" style="text-decoration: none;">Atividades</a>
+                    <button class="nav-btn next-btn">Próxima</button>
+                </div>
+            </div>
+            
+            <!-- Questão 2 -->
+            <div class="question" id="question-2">
+                <h3>2. Quantos lados tem um quadrilátero?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2-a" name="q2" value="a">
+                        <label for="q2-a">A) 2</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2-b" name="q2" value="b">
+                        <label for="q2-b">B) 3</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2-c" name="q2" value="c">
+                        <label for="q2-c">C) 4</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2-d" name="q2" value="d">
+                        <label for="q2-d">D) 5</label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="nav-btn prev-btn">Anterior</button>
+                    <button class="nav-btn next-btn">Próxima</button>
+                </div>
+            </div>
+            
+            <!-- Questão 3 -->
+            <div class="question" id="question-3">
+                <h3>3. Qual figura tem todos os ângulos retos (90 graus)?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3-a" name="q3" value="a">
+                        <label for="q3-a">A) Triângulo equilátero</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3-b" name="q3" value="b">
+                        <label for="q3-b">B) Círculo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3-c" name="q3" value="c">
+                        <label for="q3-c">C) Retângulo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3-d" name="q3" value="d">
+                        <label for="q3-d">D) Hexágono</label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="nav-btn prev-btn">Anterior</button>
+                    <button class="submit-btn" onclick="showResults()">Finalizar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="results" id="results">
+            <h2>Seu Resultado</h2>
+            <div class="score" id="score"></div>
+            <div class="answers" id="answers"></div>
+            <div class="result-buttons">
+                <button class="submit-btn" onclick="resetQuiz()">Refazer Quiz</button>
+                <a href="/p/atividades.html" class="submit-btn" style="text-decoration: none;">Voltar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navegação entre questões
+        document.querySelectorAll('.next-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentQuestion = document.querySelector('.question.active');
+                const nextQuestion = currentQuestion.nextElementSibling;
+                
+                if (nextQuestion && nextQuestion.classList.contains('question')) {
+                    currentQuestion.classList.remove('active');
+                    nextQuestion.classList.add('active');
+                    updateProgress();
+                }
+            });
+        });
+        
+        document.querySelectorAll('.prev-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentQuestion = document.querySelector('.question.active');
+                const prevQuestion = currentQuestion.previousElementSibling;
+                
+                if (prevQuestion && prevQuestion.classList.contains('question')) {
+                    currentQuestion.classList.remove('active');
+                    prevQuestion.classList.add('active');
+                    updateProgress();
+                }
+            });
+        });
+        
+        // Atualizar barra de progresso
+        function updateProgress() {
+            const questions = document.querySelectorAll('.question');
+            const currentQuestion = document.querySelector('.question.active');
+            const currentIndex = Array.from(questions).indexOf(currentQuestion);
+            const progress = ((currentIndex + 1) / questions.length) * 100;
+            
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+        
+        // Mostrar resultados
+        function showResults() {
+            const questions = document.querySelectorAll('.question');
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('score');
+            const answersDisplay = document.getElementById('answers');
+            
+            // Respostas corretas
+            const correctAnswers = {
+                q1: 'c', // Triângulo
+                q2: 'c', // 4 lados
+                q3: 'c'  // Retângulo
+            };
+            
+            let score = 0;
+            const userAnswers = {};
+            
+            // Verificar respostas
+            questions.forEach((question, index) => {
+                const questionName = `q${index + 1}`;
+                const selectedOption = question.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (selectedOption) {
+                    userAnswers[questionName] = selectedOption.value;
+                    if (selectedOption.value === correctAnswers[questionName]) {
+                        score++;
+                    }
+                } else {
+                    userAnswers[questionName] = null;
+                }
+            });
+            
+            // Exibir pontuação
+            let emoji = '';
+            if (score === 3) emoji = '🎉 Excelente!';
+            else if (score >= 2) emoji = '👍 Bom trabalho!';
+            else if (score === 1) emoji = '😕 Pode melhorar!';
+            else emoji = '😢 Tente novamente!';
+            
+            scoreDisplay.innerHTML = `Você acertou <strong>${score} de 3</strong> questões! ${emoji}`;
+            
+            // Exibir detalhes das respostas
+            let answersHTML = '<h3>Detalhes das Respostas:</h3>';
+            
+            for (let i = 1; i <= 3; i++) {
+                const questionName = `q${i}`;
+                const userAnswer = userAnswers[questionName];
+                const isCorrect = userAnswer === correctAnswers[questionName];
+                const isUnanswered = userAnswer === null;
+                
+                let answerStatus = '';
+                let answerClass = '';
+                
+                if (isUnanswered) {
+                    answerStatus = 'Não respondida';
+                    answerClass = 'unanswered';
+                } else if (isCorrect) {
+                    answerStatus = 'Correta';
+                    answerClass = 'correct';
+                } else {
+                    answerStatus = 'Incorreta';
+                    answerClass = 'incorrect';
+                }
+                
+                answersHTML += `
+                    <div class="answer-item ${answerClass}">
+                        <strong>Questão ${i}:</strong> 
+                        ${isUnanswered ? answerStatus : `Sua resposta: ${userAnswer.toUpperCase()} (${answerStatus})`}<br>
+                        Resposta correta: ${correctAnswers[questionName].toUpperCase()}
+                    </div>
+                `;
+            }
+            
+            answersDisplay.innerHTML = answersHTML;
+            
+            // Mostrar resultados e esconder questões
+            document.querySelector('.quiz-body').style.display = 'none';
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Reiniciar quiz
+        function resetQuiz() {
+            // Resetar seleções
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+            });
+            
+            // Resetar visibilidade
+            document.querySelector('.quiz-body').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            
+            // Voltar para primeira questão
+            document.querySelectorAll('.question').forEach(question => {
+                question.classList.remove('active');
+            });
+            document.getElementById('question-1').classList.add('active');
+            
+            // Resetar progresso
+            document.getElementById('progress').style.width = '0%';
+            
+            // Rolar para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Inicializar progresso
+        updateProgress();
+
+        // Prevenir zoom com teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '0')) {
+                e.preventDefault();
+            }
+        });
+
+        // Prevenir zoom com roda do mouse
+        document.addEventListener('wheel', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
