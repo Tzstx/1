@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="shortcut icon" href="/c/pag.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-color: #ffffff;
+    }
+    .azul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -70vh;
+    margin-left: 18vw;
+    background-color: #ffffff;
+    border: 0.2vh solid #1004270a; 
+    border-radius: 5vh;
+    height: 15vh;
+    width: 140vh;
+    position: absolute;
+    box-shadow: 0 0.5vh 1.5vh rgba(0, 0, 0, 0.075);
+}
+
+    .descritores {
+    margin-top: -70vh;
+    margin-left: -60vh;
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins';
+    font-size: 2.4vh;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+.descritores h6{
+    margin-top: -2vh;
+}
+    .logo {
+        height: 4.1vw;
+        width: 7vw;
+        position: fixed;
+        top: 10vh;
+        left: 82vw;
+        z-index: 1001;
+    }
+    .menu-lateral {
+        width: 37vh; /* Largura relativa à largura da viewport */
+        height: 90vh; /* Altura relativa à altura da viewport */
+        top: 5vh;
+        left: 0;
+        background-color: #100427;
+        border-radius: 0 2vh 2vh 0;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .menu {
+        margin-top: 11%;
+        color: #fff;
+        padding: 1%;
+    }
+    
+    .menu a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #fff;
+        padding: 1.8vh 7%;
+        margin-bottom: 0.6%;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .menu a i {
+        font-size: 1.5vw; /* Tamanho da fonte relativo à largura da viewport */
+        margin-right: 1vw;
+    }
+    
+    .menu a h3 {
+        margin: 0;
+        font-size: 2.3vh;
+        font-weight: 400;}
+    
+    .all-itens {
+        position: fixed;
+        background-color: #ffffff; /* Fundo branco */
+        border: 0.5vh solid #cccccc00; /* Contorno cinza */
+        display: flex;
+        margin-top: 24vh;
+        margin-left: 37vh;
+        width: 140vh;
+        height: 70vh;
+        border-radius: 4vh;
+        padding: 1vh;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    .items-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4vh;
+        width: 100%;
+        height: fit-content;
+    }
+
+    .item {
+        border: 0.3vh solid #0e003d25;
+        border-radius: 2vh;
+        background-color: rgb(255, 255, 255);
+        height: 30vh;
+        width: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: transform 0.3s;
+        box-shadow: 0 0.5vh 1.5vh rgba(0, 0, 0, 0.075); /* Sombra nos itens */
+        text-decoration: none; /* Remove o sublinhado padrão dos links */
+        color: inherit; /* Herda a cor do texto do item */
+        cursor: pointer; /* Indica que o item é clicável */
+    }
+
+    .item:hover {
+        transform: scale(1.01);
+        box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada no hover */
+    }
+
+    .item img {
+        height: 13vh;
+        width: 40vh;
+        border-radius: 3.6vh 1.6vh 0 0;
+        object-fit: cover;
+    }
+
+    .item h3 {
+        color: #100427;
+        margin-top: 3vh;
+        margin-left: 2vh;
+        font-family: 'poppins';
+        margin-bottom: 0vh;
+        font-size: 2.5vh;
+    }
+
+    .item h6 {
+        color: #100427;
+        font-size: 1.8vh;
+        font-family: 'poppins';
+        font-weight: 400;
+        margin-top: 1vh;
+        margin-left: 2vh;
+        margin-right: 2vh;
+    }
+
+</style>
+<body>
+    <div class="azul">
+    </div>
+    <div class="descritores">
+        <h3>Todos os Quizzes</h3>
+        <h6>Aqui você pode testar o que você aprendeu!</h6>
+       </div>
+    <div>
+        <img src="/c/logo.png" class="logo">
+       </div>
+    <aside class="menu-lateral">
+        <nav class="menu">
+            <a href="/p/pdf.html"><i class="fa-solid fa-bars"></i><h3>Inicio</h3></a>
+            <a href="descritores.html"><i class="fa-regular fa-file-lines"></i><h3>Descritores</h3></a>
+            <a href="/p/atividades.html"><i class="fa-solid fa-list-check"></i><h3>Atividades</h3></a>
+            <a href="/p/pdf.html"><i class="fa-regular fa-file-pdf"></i><h3>Pdf´s</h3></a>
+        </nav>
+    </aside>
+    <div class="all-itens">
+        <div class="items-container">
+            <a href="/g/d1/quizD1.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #01</h3>
+                <h6>Uma breve revisão sobre o que você entendeu sobre o descritor</h6>
+            </a>
+            <a href="/g/d2/quizD2.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #02</h3>
+                <h6>Atividade para testar seus conhecimentos sobre o descritor</h6>
+            </a>
+            <a href="/g/d3/quizD3.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #03</h3>
+                <h6>Exercícios práticos sobre o conteúdo do descritor</h6>
+            </a>
+            <a href="/g/d4/quizD4.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #04</h3>
+                <h6>Teste seu aprendizado com questões variadas</h6>
+            </a>
+            <a href="/g/d5/quizD5.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #05</h3>
+                <h6>Revisão completa dos principais pontos</h6>
+            </a>
+            <a href="/g/d6/quizD6.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #06</h3>
+                <h6>Desafios para consolidar seu conhecimento</h6>
+            </a>
+            <a href="/g/d7/quizD7.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #07</h3>
+                <h6>Pratique com situações-problema</h6>
+            </a>
+            <a href="/g/d8/quizD8.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #08</h3>
+                <h6>Atividades interativas para fixação</h6>
+            </a>
+            <a href="/g/d9/quizD9.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #09</h3>
+                <h6>Questões de múltipla escolha sobre o tema</h6>
+            </a>
+            <a href="/g/d10/quizD10.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #10</h3>
+                <h6>Teste rápido para verificação de aprendizagem</h6>
+            </a>
+            <a href="/g/d11/quizD11.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #11</h3>
+                <h6>Exercícios contextualizados</h6>
+            </a>
+            <a href="/g/d12/quizD12.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #12</h3>
+                <h6>Atividades para desenvolvimento de habilidades</h6>
+            </a>
+            <a href="/g/d13/quizD13.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #13</h3>
+                <h6>Questões discursivas e objetivas</h6>
+            </a>
+            <a href="/g/d14/quizD14.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #14</h3>
+                <h6>Simulado com questões variadas</h6>
+            </a>
+            <a href="/g/d15/quizD15.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #15</h3>
+                <h6>Revisão dos conceitos principais</h6>
+            </a>
+            <a href="/g/d16/quizD16.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #16</h3>
+                <h6>Desafios para testar seu raciocínio</h6>
+            </a>
+            <a href="/g/d17/quizD17.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #17</h3>
+                <h6>Atividades práticas de aplicação</h6>
+            </a>
+            <a href="/g/d18/quizD18.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #18</h3>
+                <h6>Exercícios para fixação de conteúdo</h6>
+            </a>
+            <a href="/g/d19/quizD19.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #19</h3>
+                <h6>Questões de interpretação e análise</h6>
+            </a>
+            <a href="/g/d20/quizD20.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #20</h3>
+                <h6>Teste seus conhecimentos avançados</h6>
+            </a>
+            <a href="/g/d21/quizD21.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #21</h3>
+                <h6>Atividades para desenvolvimento crítico</h6>
+            </a>
+            <a href="/g/d22/quizD22.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #22</h3>
+                <h6>Exercícios de síntese e conclusão</h6>
+            </a>
+            <a href="/g/d23/quizD23.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #23</h3>
+                <h6>Questões para avaliação formativa</h6>
+            </a>
+            <a href="/g/d24/quizD24.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #24</h3>
+                <h6>Atividades de conexão entre conceitos</h6>
+            </a>
+            <a href="/g/d25/quizD25.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #25</h3>
+                <h6>Desafios para pensamento criativo</h6>
+            </a>
+            <a href="/g/d26/quizD26.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #26</h3>
+                <h6>Exercícios de aplicação prática</h6>
+            </a>
+            <a href="/g/d27/quizD27.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #27</h3>
+                <h6>Questões para verificação de competências</h6>
+            </a>
+            <a href="/g/d28/quizD28.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #28</h3>
+                <h6>Atividades para desenvolvimento de habilidades</h6>
+            </a>
+            <a href="/g/d29/quizD29.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #29</h3>
+                <h6>Teste seus conhecimentos específicos</h6>
+            </a>
+            <a href="/g/d30/quizD30.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #30</h3>
+                <h6>Exercícios para consolidação final</h6>
+            </a>
+            <a href="/g/d31/quizD31.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #31</h3>
+                <h6>Questões de alto nível de dificuldade</h6>
+            </a>
+            <a href="/g/d32/quizD32.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #32</h3>
+                <h6>Atividades interdisciplinares</h6>
+            </a>
+            <a href="/g/d33/quizD33.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #33</h3>
+                <h6>Exercícios para pensamento analítico</h6>
+            </a>
+            <a href="/g/d34/quizD34.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #34</h3>
+                <h6>Desafios complexos sobre o tema</h6>
+            </a>
+            <a href="/g/d35/quizD35.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #35</h3>
+                <h6>Atividades para avaliação final</h6>
+            </a>
+            <a href="/g/d36/quizD36.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #36</h3>
+                <h6>Questões integradoras de conteúdo</h6>
+            </a>
+            <a href="/g/d37/quizD37.html" class="item">
+                <img src="/c/item1.png">
+                <h3>Quiz #37</h3>
+                <h6>Teste seus conhecimentos específicos</h6>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

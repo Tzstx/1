@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="shortcut icon" href="/c/pag.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+     body {
+        overflow-y: hidden;
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        background-color: #ffffff;
+        padding-top: 80px;
+    }
+    
+    .menu-lateral {
+        width: 37vh; /* Largura relativa à largura da viewport */
+        height: 90vh; /* Altura relativa à altura da viewport */
+        top: 5vh;
+        left: 0;
+        background-color: #100427;
+        border-radius: 0 2vh 2vh 0;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .menu {
+        margin-top: 11%;
+        color: #fff;
+        padding: 1%;
+    }
+    
+    .menu a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #fff;
+        padding: 5.7% 7%;
+        margin-bottom: 0.6%;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .menu a i {
+        font-size: 1.5vw; /* Tamanho da fonte relativo à largura da viewport */
+        margin-right: 1vw;
+    }
+    
+    .menu a h3 {
+        margin: 0;
+        font-size: 2.3vh;
+        font-weight: 400;
+    }
+    .bemvindo {
+        height: 70vh;
+        width: 55vw;
+        position: fixed;
+        top: 30vh;
+        left: 44vw;
+        z-index: 1001;
+    }
+
+    .logo {
+        height: 10.5vh;
+        width: 9vw;
+        position: fixed;
+        top: 4vh;
+        left: 45vw;
+        z-index: 1001;
+    }
+
+    .termos-condicoes {
+        position: fixed;
+        top: 1vh;
+        right: 2vh;
+        color: #100427;
+        font-size: 2vh;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <a href="/p/termos.pdf" target="_blank">
+        <h3 class="termos-condicoes">Termos e Condições</h3>
+    </a>
+    <img src="/c/logo.png" class="logo">
+    <img src="/c/bemvindo.png" class="bemvindo">
+    <aside class="menu-lateral">
+        <nav class="menu">
+            <a href="/p/inicio.html"><i class="fa-solid fa-bars"></i>
+                <h3>Inicio</h3>
+            </a>
+            <a href="/p/descritores.html"><i class="fa-regular fa-file-lines"></i>
+                <h3>Descritores</h3>
+            </a>
+            <a href="/p/atividades.html"><i class="fa-solid fa-list-check"></i>
+                <h3>Atividades</h3></a>
+            </a>
+            <a href="/p/pdf.html"><i class="fa-regular fa-file-pdf"></i>
+                <h3>Pdf´s</h3>
+            </a>
+        </nav>
+    </aside>
+</body>
+
+</html>

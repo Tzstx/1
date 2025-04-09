@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pdf's</title><link rel="shortcut icon" href="/c/pag.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        background-color: #ffffff;
+    }
+
+    .menu-lateral {
+        width: 37vh; /* Largura relativa à largura da viewport */
+        height: 90vh; /* Altura relativa à altura da viewport */
+        top: 5vh;
+        left: 0;
+        background-color: #100427;
+        border-radius: 0 2vh 2vh 0;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu {
+        margin-top: 11%;
+        color: #fff;
+        padding: 1%;
+    }
+
+    .menu a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #fff;
+        padding: 5.7% 7%;
+        margin-bottom: 0.6%;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .menu a i {
+        font-size: 1.5vw; /* Tamanho da fonte relativo à largura da viewport */
+        margin-right: 1vw;
+    }
+
+    .menu a h3 {
+        margin: 0;
+        font-size: 2.3vh;
+        font-weight: 400;
+    }
+
+    .input-group {
+        border: 0.3vh solid #0e003d10;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        padding: 1vh 1vw;
+        border-radius: 30vh;
+        gap: 1vw;
+        border: 0.4vh solid rgb(rgb(240, 239, 239));
+        max-width: 900vh; /* Largura máxima para evitar esticamento excessivo */
+        width: 132vh;
+        height: 9.2vh;
+        position: fixed;
+        top: 15vh;
+        left: 55vh; /* Ajuste para acomodar o menu lateral */
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .input-icon img {
+    width: 3vh;
+    height: 3vh; 
+}
+
+    .input-icon {
+    width: 6vh;
+    height: 5.5vh;
+    background-color: #100427;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50vh;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+    .input-field {
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        font-size: 1.2vw;
+    }
+
+    .input-field:focus {
+        outline: none;
+    }
+
+    .items-wrapper {
+        top: 8vh;
+        max-width: 950vh; /* Largura máxima para evitar esticamento excessivo */
+        width: 65vw;
+        max-height: 68vh;
+        border: 0.3vh solid #0e003d10;
+        background-color: #fff;
+        margin-top: 20vh;
+        left: 55vh;
+        overflow-y: auto;
+        border-radius: 3vh;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1vw;
+        position: fixed;
+    }
+
+    .items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1vw;
+        list-style: none;
+        padding: 1vw;
+    }
+
+    .item {
+        cursor: pointer;
+        display: none;
+        width: 18vw;
+        max-height: 75vh;
+        background-color: #fff;
+        padding: 1vw;
+        border-radius: 3vh;
+        flex-direction: column;
+        gap: 1vw;
+        border: 0.3vh solid #eee;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .item:hover {
+        transform: translateY(-0.5vh);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .item img {
+        width: 100%;
+        height: 15vh;
+        object-fit: cover;
+        border-radius: 2vh;
+        margin-bottom: 1vh;
+    }
+
+    .item-content h3 {
+        font-size: 1.2vw;
+        margin-bottom: 0.8vh;
+        color: #333;
+    }
+
+    .item-description {
+        font-size: 1vw;
+        color: #666;
+    }
+
+    #no_results {
+        display: none;
+        text-align: center;
+        font-size: 1.2vw;
+        color: #100427;
+        padding: 2vh;
+    }
+
+    .logo {
+        height: 8.5vh;
+        width: 7vw;
+        position: fixed;
+        top: 4vh;
+        left: 90vw;
+        z-index: 1001;
+    }
+
+    .descritores {
+        font-family: 'Poppins';
+        font-size: 2.4vh;
+        top: 4vh;
+        left: 22vw;
+        position: fixed;
+        z-index: 1001;
+    }
+    </style>
+<body>
+    <div class="descritores">
+        <h3>Todos os Pdf's</h3>
+        <h6>Procure pelo descritor no qual tenha dificuldade</h6>
+       </div>
+    <aside class="menu-lateral">
+    <nav class="menu">
+        <a href="/p/inicio.html"><i class="fa-solid fa-bars"></i><h3>Inicio</h3></a>
+        <a href="/p/descritores.html"><i class="fa-regular fa-file-lines"></i><h3>Descritores</h3></a>
+        <a href="/p/atividades.html"><i class="fa-solid fa-list-check"></i><h3>Atividades</h3></a>
+        <a href="/p/pdf.html"><i class="fa-regular fa-file-pdf"></i><h3>Pdf´s</h3></a>
+    </nav>
+</aside>
+<div id="container" class="search-container">
+    <div class="input-group">
+        <div class="input-icon">
+            <img src="/c/lupa.png" alt="Lupa de pesquisa">
+        </div>
+        <input id="search" type="text" class="input-field" placeholder="Digite o numero do descritor">
+    </div>
+    <div class="items-wrapper">
+        <ul class="items" id="items-container"></ul>
+    </div>
+    <div id="no_results">
+        <p>Nenhum resultado encontrado</p>
+    </div>
+</div>
+    <div>
+     <img src="/c/logo.png" class="logo">
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const itemsContainer = document.getElementById("items-container");
+    const searchInput = document.getElementById("search");
+    const noResults = document.getElementById("no_results");
+    const inputGroup = document.querySelector(".input-group");
+
+    const descriptions = [
+        "Identificar a localização de números naturais na reta numérica.",
+        "Identificar propriedades comuns e diferenças entre figuras bidimensionais e tridimensionais, relacionando-as com suas planificações.",
+        "Identificar propriedades comuns e diferenças entre figuras bidimensionais pelo número de lados e/ou pelos tipos de ângulos.",
+        "Identificar relação entre quadriláteros por meio de suas propriedades.",
+        "Resolver problema utilizando propriedades dos polígonos (soma de seus ângulos internos, número de diagonais, relações entre lados e ângulos).",
+        "Identificar a localização de números inteiros na reta numérica.",
+        "Identificar a localização de números racionais na reta numérica.",
+        "Efetuar cálculos com números inteiros envolvendo as operações (adição, subtração, multiplicação, divisão e potenciação).",
+        "Resolver problema com números naturais envolvendo diferentes significados das operações (adição, subtração, multiplicação, divisão e potenciação).",
+        "Resolver problema com números inteiros envolvendo as operações (adição, subtração, multiplicação, divisão e potenciação).",
+        "Reconhecer as diferentes representações de um número racional.",
+        "Identificar fração como representação que pode estar associada a diferentes significados.",
+        "Identificar frações equivalentes.",
+        "Reconhecer as representações decimais dos números racionais como uma extensão do sistema de numeração decimal, identificando a existência de ordens como décimos, centésimos e milésimos.",
+        "Efetuar cálculos que envolvam operações com números racionais (adição, subtração, multiplicação, divisão e potenciação).",
+        "Resolver problema que envolva variações proporcionais, diretas ou inversas, entre grandezas.",
+        "Resolver problema que envolva porcentagem.",
+        "Identificar a relação de dependência entre grandezas.",
+        "Resolver problema que envolva equações do 2º grau.",
+        "Resolver problema que envolva relações de proporcionalidade direta entre grandezas e determinar o valor de uma delas utilizando a regra de três.",
+        "Reconhecer gráfico cartesiano que representa relações de proporcionalidade direta entre grandezas.",
+        "Identificar gráfico cartesiano que representa as relações de dependência entre grandezas.",
+        "Resolver problema que envolva função polinomial do 1º grau.",
+        "Identificar a expressão algébrica que descreve uma regularidade observada em sequências de números ou figuras.",
+        "Resolver problema que envolva relações entre ângulos formados por retas paralelas cortadas por transversais.",
+        "Resolver problema que envolva triângulos e suas propriedades.",
+        "Reconhecer as relações entre representações de figuras geométricas espaciais.",
+        "Resolver problema que envolva o cálculo de perímetro de figuras planas.",
+        "Resolver problema que envolva o cálculo de área de figuras planas.",
+        "Resolver problema que envolva noções de volume.",
+        "Resolver problema que envolva relações entre diferentes unidades de medida.",
+        "Resolver problema que envolva o cálculo do volume do bloco retangular.",
+        "Efetuar cálculos com medidas de tempo.",
+        "Resolver problema que envolva o cálculo do perímetro e/ou área de figuras planas.",
+        "Resolver problema que envolva relações entre grandezas e unidades de medida.",
+        "Resolver problema que envolva o cálculo de área de figuras planas com diferentes unidades de medida.",
+        "Resolver problema que envolva o cálculo de volume de sólidos geométricos."
+    ];
+
+    function createItems() {
+        const items = [];
+        for (let i = 1; i <= 37; i++) {
+            const item = document.createElement("li");
+            item.classList.add("item");
+
+            item.innerHTML = `
+                <img src="/c/item0.png" alt="item">
+                <div class="item-content">
+                    <h3 class="item-title">Descritor D${i}</h3>
+                    <p class="item-description">
+                        ${descriptions[i - 1]}
+                    </p>
+                </div>
+            `;
+
+            // Adiciona o evento de clique para abrir o PDF
+            item.addEventListener("click", () => {
+                window.open(`/a/d${i}.pdf`, "_blank");
+            });
+
+            items.push(item);
+            itemsContainer.appendChild(item);
+        }
+        return items;
+    }
+
+    function filterItems(items, searchTerm) {
+        let hasResults = false;
+        items.forEach(item => {
+            const title = item.querySelector(".item-title").textContent.toLowerCase();
+            const itemId = title.replace('descritor#', '').trim();
+
+            if (itemId.includes(searchTerm)) {
+                item.style.display = "flex";
+                hasResults = true;
+            } else {
+                item.style.display = "none";
+            }
+        });
+        noResults.style.display = hasResults ? "none" : "block";
+    }
+
+    function resetSearch(items) {
+        searchInput.value = '';
+        noResults.style.display = 'none';
+        items.forEach(item => item.style.display = "flex"); // Exibe todos os itens novamente
+    }
+
+    const items = createItems();
+
+    // Exibe todos os itens por padrão ao carregar a página
+    items.forEach(item => item.style.display = "flex");
+
+    searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        filterItems(items, searchTerm);
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!inputGroup.contains(event.target)) {
+            resetSearch(items);
+        }
+    });
+});
+</script>
+</html>
