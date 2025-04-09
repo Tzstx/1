@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descritores Matemáticos</title>
+    <link rel="shortcut icon" href="/pag.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+     body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #f4f4f4;
+    flex-direction: column;
+  }
+
+  /* MENU LATERAL */
+  .menu-lateral {
+    width: 18vw; /* Largura relativa à largura da viewport */
+    height: 90vh; /* Altura relativa à altura da viewport */
+    top: 5vh;
+    left: 0;
+    background-color: #100427;
+    border-radius: 0 2vh 2vh 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menu {
+    margin-top: 11%;
+    color: #fff;
+    padding: 1%;
+  }
+  
+  .menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 5.7% 7%;
+    margin-bottom: 0.6%;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .menu a i {
+    font-size: 1.5vw; /* Tamanho da fonte relativo à largura da viewport */
+    margin-right: 1vw;
+  }
+  
+  .menu a h3 {
+    margin: 0;
+    font-size: 2.3vh;
+    font-weight: 400;
+  }
+
+  .logo {
+    height: 10.5vh;
+    width: 9vw;
+    position: fixed;
+    top: 2vh;
+    left: 45vw;
+    z-index: 1001;
+  }
+  .pdf-button {
+    z-index: 1001;
+    position: fixed;
+    margin-top: 52vh;
+    margin-left: 65vh;
+    background-color: #100427;
+    color: white;
+    padding: 2vh 4vh;
+    border: none;
+    border-radius: 8vh;
+    text-decoration: none;
+    font-size: 1.1vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .pdf-button:hover {
+    background-color: #1a0638;
+    transform: scale(1.05);
+  }
+
+  .items-wrapper {
+    position: fixed;
+    width: 38vh;
+    height: 60vh;
+    background-color: #fff;
+    margin-top: 0vh;
+    margin-left: 79vw;
+    overflow-y: auto;
+    border-radius: 2vh;
+    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.1);
+    padding: 2vh;
+  }
+
+  .items {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5vh;
+    list-style: none;
+    padding: 1vh;
+    margin: 0;
+  }
+
+  .item {
+    background-color: #fff;
+    padding: 2vh;
+    border-radius: 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    border: 0.2vh solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .item img {
+    width: 30vh;
+    height: 20vh;
+    object-fit: cover;
+    border-radius: 2vh;
+    margin-bottom: 1.5vh;
+  }
+
+  .item-content h3 {
+    font-size: 2.1vh;
+    margin-bottom: 2vh;
+    color: #333;
+  }
+
+  .item-description {
+    font-size: 2vh;
+    color: #666;
+  }
+
+  /* RETÂNGULO COM BORDAS PRETAS */
+  .retangulo-borda-preta {
+    position: fixed;
+    width: 100vh;
+    height: 70vh;
+    border: 3vh solid rgba(0, 0, 0, 0);
+    background-color: #fff;
+    top: 52vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3vh;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
+  }
+
+  /* ESTILOS PARA O CONTEÚDO DO RETÂNGULO */
+  .retangulo-conteudo {
+    padding: 1vh;
+    text-align:left;
+    width: 100vh;
+  }
+
+  .retangulo-conteudo h3 {
+    position: absolute;
+    font-size: 3vh;
+    color: #100427;
+    margin-top: 13vh;
+    text-align:left;
+  }
+  .p{
+    position: absolute;
+    margin-top: 65vh;
+    margin-right: 13vw;
+    font-size: 2.2vh;
+    z-index: 1001;
+  }
+  
+  /* ESTILOS PARA O VÍDEO - CÓDIGO ATUALIZADO */
+  .video-container {
+    position: relative;
+    margin-top: -13vh;
+    margin-left: -5vh;
+    z-index: 1001;
+    width: 85vh;
+    height: 50vh;
+    background: #000;
+    border-radius: 2vh;
+    overflow: hidden; /* ESSENCIAL para o border-radius funcionar */
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 2vh; /* Adicionado para garantir */
+  }
+
+  .retangulo-conteudo{
+    margin-right: 130px;
+    margin-top: 20vh;
+    text-align: left;
+  }
+    </style>
+</head>
+<body>
+    <aside class="menu-lateral">
+        <nav class="menu">
+            <a href="/p/inicio.html"><i class="fa-solid fa-bars"></i><h3>Inicio</h3></a>
+            <a href="/p/descritores.html"><i class="fa-regular fa-file-lines"></i><h3>Descritores</h3></a>
+            <a href="/p/atividades.html"><i class="fa-regular fa-paper-plane"></i><h3>Atividades</h3></a>
+            <a href="/p/pdf.html"><i class="fa-regular fa-file-pdf"></i><h3>Pdf´s</h3></a>
+        </nav>
+    </aside>
+
+    <div class="logo">
+        <img src="/c/logo.png" alt="Logo" style="width:100%; height:100%; object-fit: contain;">
+    </div>
+
+    <a href="#" class="pdf-button" id="export-pdf-btn">
+        <i class="fas fa-file-pdf"></i> Exportar PDF
+    </a>
+
+    <div class="items-wrapper">
+        <ul class="items" id="items-container"></ul>
+    </div>
+
+    <!-- RETÂNGULO COM BORDAS PRETAS -->
+    <div class="retangulo-borda-preta">
+        <div class="retangulo-conteudo">
+            <h3>Descritor #01</h3>
+        </div>
+    </div>
+    <div class="p">
+        <p>Identificar a localização de números naturais na reta numérica.</p>
+    </div>
+
+    <!-- CONTAINER DO VÍDEO -->
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/J_vJdTrajl0?si=XIgB5lxzjb74Md0R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <!-- MENSAGEM DE ERRO -->
+    <div id="pdf-error-message" class="error-message"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const itemsContainer = document.getElementById("items-container");
+            const exportPdfBtn = document.getElementById('export-pdf-btn');
+            const errorMessage = document.getElementById('pdf-error-message');
+            
+            // Configuração dos arquivos PDF (personalizável)
+            const PDF_CONFIG = {
+                basePath: '/a/',               // Pasta base onde os PDFs estão armazenados
+                filePattern: 'd{num}.pdf',     // Padrão do nome do arquivo ({num} será substituído)
+                downloadPrefix: 'DescritorD',   // Prefixo no nome do arquivo para download
+                defaultDescriptor: '1'         // Descritor que a pessoa vai baixar
+            };
+    
+            // Lista de descrições dos descritores
+            const descricoes = [
+                "Identificar a localização de números naturais na reta numérica.",
+                "Identificar propriedades comuns e diferenças entre figuras bidimensionais e tridimensionais, relacionando-as com suas planificações",      
+                "Identificar propriedades comuns e diferenças entre figuras bidimensionais pelo número de lados e/ou pelos tipos de ângulos.", 
+                "Identificar relação entre quadriláteros por meio de suas propriedades.",
+                "Resolver problema utilizando propriedades dos polígonos (soma de seus ângulos internos, número de diagonais, relações entre lados e ângulos).",
+                "Identificar a localização de números inteiros na reta numérica.",
+                "Identificar a localização de números racionais na reta numérica.",
+                "Efetuar cálculos com números inteiros envolvendo as operações (adição, subtração, multiplicação, divisão e potenciação).",
+                "Resolver problema com números naturais envolvendo diferentes significados das operações (adição, subtração, multiplicação, divisão e potenciação).", 
+                "Resolver problema com números inteiros envolvendo as operações (adição, subtração, multiplicação, divisão e potenciação).",
+                "Reconhecer as diferentes representações de um número racional.",
+                "Identificar fração como representação que pode estar associada a diferentes significados.",
+                "Identificar frações equivalentes.",
+                "Reconhecer as representações decimais dos números racionais como uma extensão do sistema de numeração decimal, identificando a existência de ordens como décimos, centésimos e milésimos.", 
+                "Efetuar cálculos que envolvam operações com números racionais (adição, subtração, multiplicação, divisão e potenciação).",
+                "Resolver problema que envolva variações proporcionais, diretas ou inversas, entre grandezas.", 
+                "Resolver problema que envolva porcentagem.",
+                "Identificar a relação de dependência entre grandezas.",
+                "Resolver problema que envolva equações do 2º grau.",
+                "Resolver problema que envolva relações de proporcionalidade direta entre grandezas e determinar o valor de uma delas utilizando a regra de três.",
+                "Reconhecer gráfico cartesiano que representa relações de proporcionalidade direta entre grandezas.",
+                "Identificar gráfico cartesiano que representa as relações de dependência entre grandezas.",
+                "Resolver problema que envolva função polinomial do 1º grau.",
+                "Identificar a expressão algébrica que descreve uma regularidade observada em sequências de números ou figuras.",
+                "Resolver problema que envolva relações entre ângulos formados por retas paralelas cortadas por transversais.",
+                "Resolver problema que envolva triângulos e suas propriedades.",
+                "Reconhecer as relações entre representações de figuras geométricas espaciais.",
+                "Resolver problema que envolva o cálculo de perímetro de figuras planas.",
+                "Resolver problema que envolva o cálculo de área de figuras planas.",
+                "Resolver problema que envolva noções de volume.",
+                "Resolver problema que envolva relações entre diferentes unidades de medida.",
+                "Resolver problema que envolva o cálculo do volume do bloco retangular.",
+                "Efetuar cálculos com medidas de tempo.",
+                "Resolver problema que envolva o cálculo do perímetro e/ou área de figuras planas.",
+                "Resolver problema que envolva relações entre grandezas e unidades de medida.",
+                "Resolver problema que envolva o cálculo de área de figuras planas com diferentes unidades de medida.",
+                "Resolver problema que envolva o cálculo de volume de sólidos geométricos."
+            ];
+    
+            // Cria os itens da lista de descritores
+            function createItems() {
+                for (let i = 1; i <= 37; i++) {
+                    const item = document.createElement("li");
+                    item.classList.add("item");
+                    
+                    item.innerHTML = `
+                        <img src="/c/item.png" alt="Descritor ${i}">
+                        <div class="item-content">
+                            <h3 class="item-title">Descritor D${i}</h3>
+                            <p class="item-description">
+                                ${descricoes[i-1]}
+                            </p>
+                        </div>
+                    `;
+                    
+                    item.addEventListener('click', function() {
+                        window.location.href = `d${i}.html`;
+                    });
+    
+                    itemsContainer.appendChild(item);
+                }
+            }
+    
+            // Obtém o número do descritor atual
+            function getCurrentDescriptorNumber() {
+                const titleElement = document.querySelector('.retangulo-conteudo h3');
+                if (titleElement) {
+                    const match = titleElement.textContent.match(/Descritor D(\d+)/);
+                    if (match && match[1]) {
+                        return match[1];
+                    }
+                }
+                return PDF_CONFIG.defaultDescriptor;
+            }
+            
+            // Verifica se o arquivo existe no servidor
+            async function checkFileExists(url) {
+                try {
+                    const response = await fetch(url, { method: 'HEAD' });
+                    return response.ok;
+                } catch (error) {
+                    console.error("Erro ao verificar arquivo:", error);
+                    return false;
+                }
+            }
+            
+            // Gera o caminho do arquivo PDF baseado na configuração
+            function getPdfPath(descriptorNumber) {
+                return PDF_CONFIG.basePath + 
+                      PDF_CONFIG.filePattern.replace('{num}', descriptorNumber);
+            }
+            
+            // Configura o evento de clique no botão de exportar PDF
+            exportPdfBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const descriptorNumber = getCurrentDescriptorNumber();
+                const pdfUrl = getPdfPath(descriptorNumber);
+                const downloadName = `${PDF_CONFIG.downloadPrefix}${descriptorNumber}.pdf`;
+                
+                // Mostra estado de carregamento
+                exportPdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparando...';
+                exportPdfBtn.disabled = true;
+                
+                try {
+                    const fileExists = await checkFileExists(pdfUrl);
+                    
+                    if (!fileExists) {
+                        showError(`Arquivo PDF do Descritor D${descriptorNumber} não encontrado!`);
+                        return;
+                    }
+                    
+                    // Cria link temporário para download
+                    triggerDownload(pdfUrl, downloadName);
+                    
+                } catch (error) {
+                    showError("Erro ao processar o download");
+                    console.error("Erro no download:", error);
+                } finally {
+                    // Restaura o botão
+                    resetExportButton();
+                }
+            });
+    
+            // Função auxiliar para mostrar erros
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+    
+            // Função para disparar o download
+            function triggerDownload(url, filename) {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+    
+            // Função para resetar o botão de exportação
+            function resetExportButton() {
+                exportPdfBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Exportar PDF';
+                exportPdfBtn.disabled = false;
+            }
+    
+            // Inicializa a criação dos itens
+            createItems();
+        });
+    </script>
+</body>
+</html>
